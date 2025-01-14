@@ -1,4 +1,4 @@
-{
+export let playerData = {
   "attributes": {
     "intelligence": 62,
     "dexterity": 33,

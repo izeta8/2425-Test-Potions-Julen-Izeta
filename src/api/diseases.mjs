@@ -1,4 +1,4 @@
-[{
+export let diseases = [{
   "modifiers": {
     "hit_points": -45,
     "intelligence": 0,

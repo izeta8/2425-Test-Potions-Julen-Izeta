@@ -1,8 +1,8 @@
 
 import Cauldron from "../classes/cauldron.mjs"
 import PotionIngredients from "../classes/ingredients.mjs";
-import diseases from '../api/diseases.json' with { type: "json" };
-import playerData from '../api/playerData.json' with { type: "json" };
+import {diseases} from '../api/diseases.mjs';
+import {playerData} from '../api/playerData.mjs';
 
 describe('When all the ingredients have effect "Damage"', () => {
   describe('If the ingredients contain enough effects to combat a certain disease, an associated disease will be created', () => {
