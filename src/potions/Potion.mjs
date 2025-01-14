@@ -1,28 +1,21 @@
-import { Modifiers } from "../interfaces/potions/Modifier";
-
 
 // Exportarla clase potion 
 export default class Potion {
 
-    // Elementos que contiene la clase potion
-    name: string;
-    modifier: Modifiers;
-    type: string;
-
     // Constructor de la clase Potion
-    constructor(name:string, modifier:Modifiers) {
+    constructor(name, modifier) {
         this.name = name;
         this.modifier = modifier;
         this.type = "Potion";
     }
 
     // Clase estatica para crear las pociones
-    static createBasicPotion(name:string, modifier:Modifiers){
+    static createBasicPotion(name, modifier){
         return( new Potion(name, modifier));
     }
 
     // Metodo para conseguir el valor minimo del modificador 
-    static getTheMinModifierFromAllTheIngredients(ingredients:[], attribute:string) {
+    static getTheMinModifierFromAllTheIngredients(ingredients, attribute) {
     
         let ingredientModifier = "greater";
 

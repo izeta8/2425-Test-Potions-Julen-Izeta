@@ -1,12 +1,8 @@
-import { Modifiers } from "../interfaces/potions/Modifier";
-import Potion from "./Potion";
-
-
-
+import Potion from "./Potion.mjs";
 
 export default class Purification extends Potion {
     // Constructor de la clase Purification que hereda de Potion
-    constructor(name: string, modifier: Modifiers) {
+    constructor(name, modifier) {
         // Pasar los parametros a la clase padre
         super(name, modifier)
     }
@@ -18,7 +14,7 @@ export default class Purification extends Potion {
         const name = "Potion of Purification";
 
         // Se crea el objeto modifiers con valor 0, porque no tiene efecto en los atributos del player
-        const modifiers: Modifiers = {
+        const modifiers = {
             "hit_points": 0,
             "intelligence": 0,
             "dexterity": 0,

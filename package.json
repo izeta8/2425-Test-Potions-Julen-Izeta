@@ -1,9 +1,9 @@
 {
   "name": "2425-test-potions-julen-izeta",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.mjs",
     "test": "jest"
   },
   "author": "",

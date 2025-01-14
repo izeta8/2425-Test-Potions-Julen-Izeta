@@ -1,20 +1,11 @@
-import { Modifier_Attributes_Names } from "../constants/constants_potions";
-import { usePlayerData } from "../context/PlayerDataContext";
-import { Modifiers } from "../interfaces/potions/Modifier";
-import Potion from "./Potion";
+import Potion from "./Potion.mjs";
 
 
 
 export default class FailedPotion extends Potion {
 
-    type: string;
-    value: number;
-    image: string;
-    min_lvl: number;
-    description: string;
-
     // Constructor de la clase Stench que hereda de Potion
-    constructor(name: string, modifier: Modifiers) {
+    constructor(name, modifier) {
         // Pasar los parametros a la clase padre
         super(name, modifier);
         this.type = "failed";
@@ -24,7 +15,7 @@ export default class FailedPotion extends Potion {
         this.min_lvl = 1;
     }
 
-    static create(playerData:any) {
+    static create(playerData) {
 
 
         // Simular el lanzar un dado de cien caras
@@ -38,7 +29,7 @@ export default class FailedPotion extends Potion {
 
             return(FailedPotion.createPositiveEffectFailedPotion());
 
-        }else {
+        } else {
             // Si el 20% de la suma de charisma e insanity es menor que el valor de la tirada de dado, se ejecutara otra tirada de 1D2
 
             // Simular el lanzar un dado de dos caras
@@ -63,7 +54,7 @@ export default class FailedPotion extends Potion {
         const name = "Tonic of Downfall";
 
         // Se crea el objeto modifiers para la creacion de la pocion con el valor calculado anteriormente
-        const modifiers: Modifiers = {
+        const modifiers = {
             "hit_points": 0,
             "intelligence": 0,
             "dexterity": 0,
@@ -92,7 +83,7 @@ export default class FailedPotion extends Potion {
         const name = "Tonic of Downfall";
 
         // Se crea el objeto modifiers para la creacion de la pocion con el valor calculado anteriormente
-        const modifiers: Modifiers = {
+        const modifiers = {
             "hit_points": 0,
             "intelligence": 0,
             "dexterity": 0,
@@ -123,7 +114,7 @@ export default class FailedPotion extends Potion {
         const name = "Tonic of Downfall";
 
         // Se crea el objeto modifiers para la creacion de la pocion con el valor calculado anteriormente
-        const modifiers: Modifiers = {
+        const modifiers = {
             "hit_points": 0,
             "intelligence": 0,
             "dexterity": 0,

@@ -1,19 +1,10 @@
-import { Venom_Values, Venom_Values_Insanity } from "../constants/constants_potions";
-import { Modifiers } from "../interfaces/potions/Modifier";
-import Potion from "./Potion";
+import { Venom_Values, Venom_Values_Insanity } from "../constants/constants_potions.mjs";
+import Potion from "./Potion.mjs";
 
 export default class Venom extends Potion {
 
-    // Elementos propiios que contiene la clase Venom
-    duration: number;
-    type: string;
-    value: number;
-    image: string;
-    min_lvl: number;
-    description: string;
-
     // Constructor de la clase Venom hereda de Potion
-    constructor(name: string, modifier: Modifiers, duration: number) {
+    constructor(name, modifier, duration) {
         // Pasar los parametros a la clase padre
         super(name, modifier);
         // Añadir los parametros propios de la clase
@@ -25,13 +16,13 @@ export default class Venom extends Potion {
         this.min_lvl = 1;
     }
 
-    static create(ingredients, attribute: string) {
+    static create(ingredients, attribute) {
 
         // Calcular el valor que se va a incrementar del atributo
         const decreaseValue = calculateDecreasePoints(ingredients, attribute);
 
         // Calcular la duracion de la pocion
-        const duration: number = calculatePotionDuration(ingredients, attribute);
+        const duration = calculatePotionDuration(ingredients, attribute);
 
         // Se obtiene el menor nivel de modificador entre todos los ingredientes
         const ingredientModifier = (Math.abs(decreaseValue) === 20) ? "Greater " :
@@ -44,7 +35,7 @@ export default class Venom extends Potion {
 
 
         // Se crea el objeto modifiers para la creacion de la pocion con el valor calculado anteriormente
-        const modifiers: Modifiers = createModifierObjectWithTheCorrectValues(attribute, decreaseValue);
+        const modifiers = createModifierObjectWithTheCorrectValues(attribute, decreaseValue);
 
         return (new Venom(name, modifiers, duration));
     }
@@ -53,10 +44,10 @@ export default class Venom extends Potion {
 
 
 // Funcion que calcula los puntos del atributo  que se van a reducir
-function calculateDecreasePoints(ingredients: [], attribute: string) :number {
+function calculateDecreasePoints(ingredients, attribute) {
 
-    let value: number = 0;
-    const ingredientsQuantity: number = ingredients.length;
+    let value = 0;
+    const ingredientsQuantity = ingredients.length;
 
     // Se recorre el array de ingredientes
     for (let i = 0; i < ingredientsQuantity; i++) {
@@ -102,11 +93,11 @@ function calculateDecreasePoints(ingredients: [], attribute: string) :number {
 
 
 // Funcion para calcular la duracion de los efectos de la pocion en base a los ingredientes
-function calculatePotionDuration(ingredients: [], attribute: string): number {
+function calculatePotionDuration(ingredients, attribute) {
     
-    let duration: number = 0;
+    let duration = 0;
 
-    const ingredientsQuantity: number = ingredients.length;
+    const ingredientsQuantity = ingredients.length;
 
     // Se recorre el array de ingredientes
     for (let i = 0; i < ingredientsQuantity; i++) {
@@ -152,8 +143,8 @@ function calculatePotionDuration(ingredients: [], attribute: string): number {
 }
 
 // Funcion que añade el valor al atributo correcto
-function createModifierObjectWithTheCorrectValues(attribute: string, value: number) {
-    const modifiers: Modifiers = {
+function createModifierObjectWithTheCorrectValues(attribute, value) {
+    const modifiers = {
             "hit_points": 0,
             "intelligence": 0,
             "dexterity": 0,
@@ -192,6 +183,6 @@ function createModifierObjectWithTheCorrectValues(attribute: string, value: numb
 
 
 // Funcion que convierte la primera letra de un string en mayuscula
-function capitalizeFirstLetter(string: string): string{
+function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }

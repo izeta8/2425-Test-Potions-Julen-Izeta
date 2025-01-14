@@ -1,19 +1,12 @@
-import { Essence_Value } from "../constants/constants_potions";
-import { Modifiers } from "../interfaces/potions/Modifier";
-import Potion from "./Potion";
+import { Essence_Value } from "../constants/constants_potions.mjs";
+import Potion from "./Potion.mjs";
 
 
 
 export default class Essence extends Potion {
 
-  type: string;
-  value: number;
-  image: string;
-  min_lvl: number;
-  description: string;
-
   // Constructor de la clase Essence que hereda de Potion
-  constructor(name: string, modifier: Modifiers) {
+  constructor(name, modifier) {
     // Pasar los parametros a la clase padre
     super(name, modifier);
     this.type = "essence";
@@ -23,7 +16,7 @@ export default class Essence extends Potion {
     this.min_lvl = 1;
   }
 
-  static create(ingredients: []) {
+  static create(ingredients) {
 
     // Se obtiene el menor nivel de modificador entre todos los ingredientes
     const ingredientModifier = Potion.getTheMinModifierFromAllTheIngredients(ingredients, "hit_points");
@@ -35,7 +28,7 @@ export default class Essence extends Potion {
     const increaseHitPointsValue = calculateIncreaseHitPoints(ingredients);
 
     // Se crea el objeto modifiers para la creacion de la pocion con el valor calculado anteriormente
-    const modifiers: Modifiers = {
+    const modifiers = {
       "hit_points": increaseHitPointsValue,
       "intelligence": 0,
       "dexterity": 0,
@@ -52,16 +45,16 @@ export default class Essence extends Potion {
 
 
 // Funcion que calcula los puntos del atributo 'hit_points' que se van a incrementar
-function calculateIncreaseHitPoints(ingredients: []) {
+function calculateIncreaseHitPoints(ingredients) {
 
-  let value: number = 0;
-  const ingredientsQuantity: number = ingredients.length;
+  let value = 0;
+  const ingredientsQuantity = ingredients.length;
 
   // Variables para controlar cuantos de cada potencia hay
-  let greaterQuantity: number = 0;
-  let nothingQuantity: number = 0;
-  let lesserQuantity: number = 0;
-  let leastQuantity: number = 0;
+  let greaterQuantity = 0;
+  let nothingQuantity = 0;
+  let lesserQuantity = 0;
+  let leastQuantity = 0;
 
   // Se recorre el array de ingredientes
   for (let i = 0; i < ingredientsQuantity; i++) {

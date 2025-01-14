@@ -1,20 +1,9 @@
-import { Poison_Values } from "../constants/constants_potions";
-import { Disease } from "../interfaces/potions/Disease";
-import { Modifiers } from "../interfaces/potions/Modifier";
-import Potion from "./Potion";
-
-
+import Potion from "./Potion.mjs";
 
 export default class Poison extends Potion {
 
-    type: string;
-    value: number;
-    image: string;
-    min_lvl: number;
-    description: string;
-
     // Constructor de la clase Poison que hereda de Potion
-    constructor(name: string, modifier: Modifiers) {
+    constructor(name, modifier) {
         // Pasar los parametros a la clase padre
         super(name, modifier);
         this.type = "poison";
@@ -25,14 +14,14 @@ export default class Poison extends Potion {
     }
 
 
-    static create(disease: Disease) {
+    static create(disease) {
 
 
         // Se crea el String completo del nombre de la pocion
         const name = "Poison of " + disease.name;
 
         // Se crea el objeto modifiers para la creacion de la pocion con el valor calculado anteriormente
-        const modifiers: Modifiers = createModifierObjectWithTheCorrectValues(disease);
+        const modifiers = createModifierObjectWithTheCorrectValues(disease);
     
 
         return (new Poison(name, modifiers));
@@ -41,8 +30,8 @@ export default class Poison extends Potion {
 
 
 // Funcion que añade el valor al atributo correcto
-function createModifierObjectWithTheCorrectValues(disease: Disease) {
-    const modifiers: Modifiers = {
+function createModifierObjectWithTheCorrectValues(disease) {
+    const modifiers = {
         "hit_points": 0,
         "intelligence": 0,
         "dexterity": 0,

@@ -1,20 +1,11 @@
-import { Antidote_Values } from "../constants/constants_potions";
-import { Disease } from "../interfaces/potions/Disease";
-import { Modifiers } from "../interfaces/potions/Modifier";
-import Potion from "./Potion";
-
+import { Antidote_Values } from "../constants/constants_potions.mjs";
+import Potion from "./Potion.mjs";
 
 
 export default class Antidote extends Potion {
 
-    type: string;
-    value: number;
-    image: string;
-    min_lvl: number;
-    description: string;
-
     // Constructor de la clase Antidote que hereda de Potion
-    constructor(name: string, modifier: Modifiers) {
+    constructor(name, modifier) {
         // Pasar los parametros a la clase padre
         super(name, modifier);
         this.type = "antidote";
@@ -24,13 +15,13 @@ export default class Antidote extends Potion {
         this.min_lvl = 1;
     }
 
-    static create(disease: Disease) {
+    static create(disease) {
 
         // Se crea el String completo del nombre de la pocion
         const name = "Antidote of " + disease.name;
 
         // Se crea el objeto modifiers para la creacion de la pocion con el valor calculado anteriormente
-        const modifiers: Modifiers = createModifierObjectWithTheCorrectValues(disease);
+        const modifiers = createModifierObjectWithTheCorrectValues(disease);
 
         return (new Antidote(name, modifiers));
     }
@@ -38,8 +29,8 @@ export default class Antidote extends Potion {
 
 
 // Funcion que añade el valor al atributo correcto
-function createModifierObjectWithTheCorrectValues(disease: Disease) {
-    const modifiers: Modifiers = {
+function createModifierObjectWithTheCorrectValues(disease) {
+    const modifiers = {
         "hit_points": 0,
         "intelligence": 0,
         "dexterity": 0,
@@ -92,10 +83,10 @@ function createModifierObjectWithTheCorrectValues(disease: Disease) {
 }
 
 // Funcion para calcular el valor aleatorio para los atributos que tienen un rango
-function calculateRandomValueForAttributes(disease: Disease, attribute: string): number {
+function calculateRandomValueForAttributes(disease, attribute) {
 
-    let value: number = 0;
-    let modifier: string = "";
+    let value = 0;
+    let modifier = "";
 
     const antidote_effects = disease.antidote_effects;
 

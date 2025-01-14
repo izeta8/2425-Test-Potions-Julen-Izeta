@@ -1,11 +1,11 @@
-import Antidote from "../potions/Antidote";
-import Elixir from "../potions/Elixir";
-import Essence from "../potions/Essence";
-import FailedPotion from "../potions/FailedPotion";
-import Poison from "../potions/Poison";
-import Purification from "../potions/Purification";
-import Stench from "../potions/Stench";
-import Venom from "../potions/Venom";
+import Antidote from "../potions/Antidote.mjs";
+import Elixir from "../potions/Elixir.mjs";
+import Essence from "../potions/Essence.mjs";
+import FailedPotion from "../potions/FailedPotion.mjs";
+import Poison from "../potions/Poison.mjs";
+import Purification from "../potions/Purification.mjs";
+import Stench from "../potions/Stench.mjs";
+import Venom from "../potions/Venom.mjs";
 import Ingredients from "./ingredients.mjs";
 
 
