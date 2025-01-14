@@ -19,7 +19,7 @@ class Cauldron {
 
     createPotion(ingredients) {
 
-        console.log("Ingredientes proporcionados:", ingredients);
+        // console.log("Ingredientes proporcionados:", ingredients);
 
         const numIngredients = ingredients.length;
         if (numIngredients < 2 || numIngredients > 4) {
@@ -31,13 +31,13 @@ class Cauldron {
         const commonAttributeEffects = ingredient1.findCommonAttributeEffectsMultipleSet(...restIngredients);
         const commonEffects = ingredient1.findCommonEffectsMultipleSet(...restIngredients);
 
-        console.log('Efectos comunes basados en el atributo:', commonAttributeEffects);
-        console.log('Efectos comunes basados en el atributo:', commonEffects);
+        // console.log('Efectos comunes basados en el atributo:', commonAttributeEffects);
+        // console.log('Efectos comunes basados en el atributo:', commonEffects);
 
         //Create Essence/Stench/Venom/Elixir/Purification
         if (commonAttributeEffects.length > 0) {
             const potion = this.createPotionType(commonAttributeEffects);
-            console.log("Resultado de la creación de la poción:", potion);
+            // console.log("Resultado de la creación de la poción:", potion);
             return potion;
         }
         //Create Poison/Antidote
@@ -68,7 +68,7 @@ class Cauldron {
 
                 // Creation of Purification   
                 if (this.isPotionOfPurification()) {
-                    console.log("create PurificationPotion");
+                    // console.log("create PurificationPotion");
                     const potion = Purification.create(this.ingredients.ingredients);
                     return potion;
                 }
@@ -76,11 +76,11 @@ class Cauldron {
                 //Creation of Essence/Stench     
                 if (effect.attribute === 'hit_points') {
                     if (effect.effect === 'increase') {
-                        console.log("create EssencePotion");
+                        // console.log("create EssencePotion");
                         const potion = Essence.create(this.ingredients.ingredients);
                         return potion;
                     } else if (effect.effect === 'decrease') {
-                        console.log("create StenchPotion");
+                        // console.log("create StenchPotion");
                         const potion = Stench.create(this.ingredients.ingredients);
                         return potion;
                     }
@@ -88,24 +88,24 @@ class Cauldron {
                 //Creation of Venom/Elixir
                 if (effect.attribute === 'insanity') {
                     if (effect.effect === 'calm') {
-                        console.log("create ElixirPotion");
+                        // console.log("create ElixirPotion");
                         const potion = Elixir.create(this.ingredients.ingredients, "insanity");
                         return potion;
                     } else if (effect.effect === 'frenzy') {
-                        console.log("create VenomPotion");
+                        // console.log("create VenomPotion");
                         const potion = Venom.create(this.ingredients.ingredients, "insanity");
                         return potion;
                     }
                 } else {
                     if (effect.effect === 'boost') {
-                        console.log("create ElixirPotion");
+                        // console.log("create ElixirPotion");
                         const potion = Elixir.create(this.ingredients.ingredients, effect.attribute);
                         return potion;
                     } else if (effect.effect === 'setback') {
-                        console.log("create VenomPotion");
-                        console.log("line88 cauldron");
+                        // console.log("create VenomPotion");
+                        // console.log("line88 cauldron");
 
-                        console.log(this.ingredients.ingredients[0]);
+                        // console.log(this.ingredients.ingredients[0]);
                         const potion = Venom.create(this.ingredients.ingredients, effect.attribute);
                         return potion;
                     }
@@ -129,7 +129,7 @@ class Cauldron {
             });
 
             if (matchingIngredients.length === requiredEffects.length) {
-                console.log("create antidotePotion");
+                // console.log("create antidotePotion");
 
                 const potion = Antidote.create(disease);
                 return potion;
@@ -152,7 +152,7 @@ class Cauldron {
             });
 
             if (matchingIngredients.length === requiredEffects.length) {
-                console.log("create poisonPotion");
+                // console.log("create poisonPotion");
 
                 const potion = Poison.create(disease);
                 return potion;
